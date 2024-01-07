@@ -4,10 +4,12 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Student {
     private String name;
-    private ArrayList<Integer> listOfMarks = new ArrayList<Integer>();
+    private List<Integer> listOfMarks = new ArrayList<Integer>();
     public Student(String name, int... listOfMarks) {
         this.name = name;
         for (int mark : listOfMarks) {
@@ -26,27 +28,24 @@ public class Student {
         return sum;
     }
     public int getMaximumMark() {
-        int maximum = Integer.MIN_VALUE;
-        for (int mark : listOfMarks) {
-            if (mark > maximum) {
-                maximum = mark;
-            }
-        }
-        return maximum;
+        return Collections.max(listOfMarks);
     }
     public int getMinimumMark() {
-        int minimum = Integer.MAX_VALUE;
-        for (int mark : listOfMarks) {
-            if (mark < minimum) {
-                minimum = mark;
-            }
-        }
-        return minimum;
+        return Collections.min(listOfMarks);
     }
     public BigDecimal getAverageMarks() {
         int sum = getTotalSumOfMarks();
         int numbers = getNumberOfMarks();
         return new BigDecimal(sum).divide(new BigDecimal(numbers),3, RoundingMode.UP);
+    }
+    public  String toString(){
+        return name + listOfMarks;
+    }
+    public void addNewMark(int mark) {
+        listOfMarks.add(mark);
+    }
+    public void removeMarkAtIndex(int index){
+        listOfMarks.remove(index);
     }
 
 }
