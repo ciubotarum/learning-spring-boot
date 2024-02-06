@@ -1,21 +1,19 @@
-package com.in28minutes.learningspringboot.courses.bean;
+package com.in28minutes.springboot.learnjpaandhibernate.course;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-//@Entity(name = "Course1")  // if you want to change the name of the table
 @Entity
 public class Course {
     @Id
-    @GeneratedValue
     private long id;
-//    @Column(name = "course_name") // if we want to change the name of the column
+//    @Column(name = "name")   // not mandatory because we have the same names in the table
     private String name;
+//    @Column(name = "author")
     private String author;
-    public Course() {
 
+    public Course() {
     }
 
     public Course(long id, String name, String author) {
@@ -31,6 +29,18 @@ public class Course {
                 ", name='" + name + '\'' +
                 ", author='" + author + '\'' +
                 '}';
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public long getId() {
